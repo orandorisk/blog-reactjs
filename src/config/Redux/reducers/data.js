@@ -1,5 +1,9 @@
 const initialState = {
-    data: []
+    data: [],
+    page: {
+        currentPage: 1,
+        totalPage: 1,
+    }
 }
 
 export default function data(state = initialState, action) {
@@ -10,6 +14,12 @@ export default function data(state = initialState, action) {
                 ...state,
                 // override the loading property
                 data: action.payload,
+            }
+        }
+        case 'UPDATE_PAGE': {
+            return {
+                ...state,
+                page: action.payload
             }
         }
         default:
