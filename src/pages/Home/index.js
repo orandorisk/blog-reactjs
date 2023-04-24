@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Button, BlogItem, Gap } from '../../components';
 import './home.scss';
 import { useNavigate } from 'react-router-dom';
@@ -7,15 +7,13 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const Home = () => {
 
-  const [data, setData] = useState([]);
-  const { datas, name} = useSelector(state => state.data);
+  const { data } = useSelector(state => state.data);
   const dispatch = useDispatch();
-  console.log('data state global: ', datas);
+  console.log('data state global: ', data);
 
   useEffect(() => {
     const getData = async () => {
       const { data } = await ApiFetch();
-      setData(data);
       dispatch({ type: 'DATA_UPDATE', payload: data });
     }
     getData();
@@ -27,13 +25,12 @@ const Home = () => {
   }
   return (
     <div className='home-page-wrapper'>
-      <p>{name}</p>
       <div className='create-wrapper'>
          <Button title="create blog" onClick={createPage}/>
       </div>
       <Gap height={20}/>
       <div className='content-wrapper'>
-        <BlogItem blog={datas}/>
+        <BlogItem blog={data}/>
       </div>
       <div className='pagination'>
         <Button title="Previous"/>

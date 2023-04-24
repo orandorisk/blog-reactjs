@@ -1,15 +1,15 @@
-const initialState = {
-    data: []
+const initialStateHome = {
+    name: 'orlando'
 }
 
-export default function data(state = initialState, action) {
+export default function GlobalReducers(state = initialStateHome, action) {
     switch (action.type) {
-        case 'DATA_UPDATE': {
+        case 'UPDATE_NAME': {
             return {
                 // copy the state
                 ...state,
                 // override the loading property
-                data: action.payload,
+                name: 'riski'
             }
         }
         default:
