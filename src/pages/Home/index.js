@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { Button, BlogItem, Gap } from '../../components';
 import './home.scss';
 import { useNavigate } from 'react-router-dom';
-import { ApiFetch } from '../../utils/ApiFetch';
 import { useSelector, useDispatch } from 'react-redux';
+import { getBlogs } from '../../config/Redux/actions';
 
 const Home = () => {
 
@@ -12,11 +12,7 @@ const Home = () => {
   console.log('data state global: ', data);
 
   useEffect(() => {
-    const getData = async () => {
-      const { data } = await ApiFetch();
-      dispatch({ type: 'DATA_UPDATE', payload: data });
-    }
-    getData();
+    dispatch(getBlogs());
   }, [dispatch]);
 
   const navigate = useNavigate();
