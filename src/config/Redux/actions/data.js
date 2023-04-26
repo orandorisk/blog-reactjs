@@ -15,13 +15,3 @@ export const getBlogs = (page) => async (dispatch) => {
         console.log(error);
     }
 }
-
-export const createPost = (data) => async (dispatch) => {
-    try {
-        const upload = await api.createPost(data);
-        console.log('data berhasil upload : ',upload);
-
-    } catch (error) {
-        console.log(error);
-    }
-}
