@@ -8,7 +8,7 @@ export const getBlogs = (page) => async (dispatch) => {
             type: 'UPDATE_PAGE', 
             payload: {
                 currentPage: data.current_page, 
-                totalPage: Math.ceil(data.total_data / data.total_pages)
+                totalPage: Math.ceil(data.total_data / data.per_page)
             }
         })
     } catch (error) {
